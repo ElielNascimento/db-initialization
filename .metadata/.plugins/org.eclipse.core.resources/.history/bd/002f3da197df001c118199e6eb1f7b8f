@@ -1,0 +1,1 @@
+INSERT INTO tbl_aluno (name, cpf, address) VALUES ('ELIEL', '084', 'RUA DAS VIOLETAS');

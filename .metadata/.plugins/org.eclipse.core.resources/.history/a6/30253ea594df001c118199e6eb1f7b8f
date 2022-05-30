@@ -1,0 +1,5 @@
+package br.com.codeforcadastro.dbinitialization.entities;
+
+public class Curso {
+
+}

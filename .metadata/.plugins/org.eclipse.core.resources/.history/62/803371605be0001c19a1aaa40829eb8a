@@ -1,0 +1,5 @@
+INSERT INTO
+    tbl_aluno (aluno_name,aluno_cpf, aluno_address)
+VALUES
+    ('ELIEL', '084', 'RUA DAS VIOLETAS');
+

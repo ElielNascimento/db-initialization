@@ -1,0 +1,10 @@
+package br.com.codeforcadastro.dbinitialization.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tbl_aluno")
+public class Aluno {
+
+}
