@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,15 +31,31 @@ public class Aluno implements Serializable {
 	@Column(name = "aluno_address")
 	private String address;
 
+	@ManyToOne
+	@JoinColumn(name = "ID_CURSO")
+	private Curso curso;
+
+	@ManyToOne
+	@JoinColumn(name = "ID_ESCOLA")
+	private Escola escola;
+
+	@ManyToOne
+	@JoinColumn(name = "ID_MATRICULA")
+	private Matricula matriculaList;
+
 	public Aluno() {
 	}
 
-	public Aluno(Long id, String name, String cpf, String address) {
+	public Aluno(Long id, String name, String cpf, String address, Curso curso, Escola escola,
+			Matricula matriculaList) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
 		this.address = address;
+		this.curso = curso;
+		this.escola = escola;
+		this.matriculaList = matriculaList;
 	}
 
 	public String getName() {
@@ -67,6 +85,35 @@ public class Aluno implements Serializable {
 	public Long getId() {
 		return id;
 	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+	public Escola getEscola() {
+		return escola;
+	}
+
+	public void setEscola(Escola escola) {
+		this.escola = escola;
+	}
+
+	public Matricula getMatriculaList() {
+		return matriculaList;
+	}
+
+	public void setMatriculaList(Matricula matriculaList) {
+		this.matriculaList = matriculaList;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 
 	@Override
 	public int hashCode() {

@@ -1,0 +1,15 @@
+package br.com.codeforcadastro.dbinitialization.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import br.com.codeforcadastro.dbinitialization.entities.Matricula;
+
+@Repository
+public interface MatriculaRepository extends JpaRepository<Matricula, Long> {
+
+	List<Matricula> findAllByOrderByMomentDesc();
+
+}

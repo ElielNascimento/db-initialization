@@ -1,5 +1,0 @@
-INSERT INTO tbl_aluno (name, cpf, address) VALUES ('ELIEL', '084', 'RUA DAS VIOLETAS');
-INSERT INTO tbl_aluno (name, cpf, address) VALUES ('ELIEL', '084', 'RUA DAS VIOLETAS');
-
-
-INSERT INTO tbl_curso(nome, duracao) VALUES ('Geografia', '10 anos');

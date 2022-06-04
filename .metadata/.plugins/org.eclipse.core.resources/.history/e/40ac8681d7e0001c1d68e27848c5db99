@@ -1,0 +1,10 @@
+package br.com.codeforcadastro.dbinitialization.service;
+
+import java.io.Serializable;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class MatriculaService implements Serializable {
+
+}

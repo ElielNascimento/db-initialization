@@ -1,0 +1,98 @@
+package br.com.codeforcadastro.dbinitialization.dto;
+
+import java.io.Serializable;
+import java.time.Instant;
+import java.util.List;
+import java.util.Objects;
+
+import br.com.codeforcadastro.dbinitialization.entities.Aluno;
+import br.com.codeforcadastro.dbinitialization.entities.Curso;
+import br.com.codeforcadastro.dbinitialization.entities.Escola;
+import br.com.codeforcadastro.dbinitialization.entities.Matricula;
+
+public class MatriculaDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
+
+	private Instant moment;
+
+	private Aluno aluno;
+
+	private Escola escola;
+
+	private List<Curso> curso;
+
+	public MatriculaDTO() {
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public void setEscola(List<Escola> escola) {
+		this.escola = escola;
+	}
+
+	public void setCurso(List<Curso> curso) {
+		this.curso = curso;
+	}
+
+	public MatriculaDTO(Matricula entity) {
+		this.id = entity.getId();
+		this.moment = entity.getMoment();
+		this.aluno = entity.getAluno();
+		this.escola = entity.getEscola();
+		this.curso = entity.getCurso();
+	}
+
+	public Instant getMoment() {
+		return moment;
+	}
+
+	public void setMoment(Instant moment) {
+		this.moment = moment;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public List<Escola> getEscola() {
+		return escola;
+	}
+
+	public List<Curso> getCurso() {
+		return curso;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MatriculaDTO other = (MatriculaDTO) obj;
+		return Objects.equals(id, other.id);
+	}
+
+}

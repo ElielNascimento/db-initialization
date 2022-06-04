@@ -1,6 +1,7 @@
 package br.com.codeforcadastro.dbinitialization.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +31,12 @@ public class Escola implements Serializable {
 
 	@Column(name = "escola_address")
 	private String address;
+	
+	 @OneToMany
+	 @JoinColumn(name = "ID_ESCOLA")
+	 private List<Aluno> alunoList;
+	
+	
 
 	public Escola() {
 	}

@@ -1,0 +1,22 @@
+INSERT INTO
+  tbl_aluno (aluno_name, aluno_cpf, aluno_address) VALUES ('PEDRO', '084', 'RUA DAS VIOLETAS');
+
+  INSERT INTO 
+  tbl_curso (curso_name, curso_duration) VALUES ('LOGISTICA', 3);
+
+  INSERT INTO 
+  tbl_matricula (curso_name, curso_duration) VALUES ('LOGISTICA', 3);
+
+
+  INSERT INTO 
+  tbl_escola (escola_name, escola_cnpj, escola_address) VALUES ('UNICESUMAR', '545222',
+   'RUA GEDNER');
+
+ INSERT INTO tbl_aluno (ID_CURSO, ID_ESCOLA, ID_MATRICULA) VALUES (1,1,1);
+
+
+
+
+
+
+  

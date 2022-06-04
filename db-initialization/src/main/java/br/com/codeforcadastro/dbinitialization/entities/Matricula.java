@@ -2,16 +2,16 @@ package br.com.codeforcadastro.dbinitialization.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,25 +27,18 @@ public class Matricula implements Serializable {
 	@Column(name = "matricula_moment")
 	private Instant moment;
 
-	@OneToOne(cascade = { CascadeType.DETACH })
-	@JoinColumn(name = "aluno_id")
-	private Aluno aluno;
+	@OneToMany
+	@JoinColumn(name = "ID_MATRICULA")
+	private List<Aluno> alunoList;
 
-	@OneToOne(cascade = { CascadeType.DETACH })
-	@JoinColumn(name = "escola_id")
-	private Escola escola;
+	public Matricula() {
+	}
 
-	@OneToOne(cascade = { CascadeType.DETACH })
-	@JoinColumn(name = "curso_id")
-	private Curso curso;
-
-	public Matricula(Long id, Instant moment, Aluno aluno, Escola escola, Curso curso) {
+	public Matricula(Long id, Instant moment, List<Aluno> alunoList) {
 		super();
 		this.id = id;
 		this.moment = moment;
-		this.aluno = aluno;
-		this.escola = escola;
-		this.curso = curso;
+		this.alunoList = alunoList;
 	}
 
 	public Instant getMoment() {
@@ -64,28 +57,12 @@ public class Matricula implements Serializable {
 		return id;
 	}
 
-	public Escola getEscola() {
-		return escola;
+	public List<Aluno> getAlunoList() {
+		return alunoList;
 	}
 
-	public void setEscola(Escola escola) {
-		this.escola = escola;
-	}
-
-	public Curso getCurso() {
-		return curso;
-	}
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
-
-	public Aluno getAluno() {
-		return aluno;
-	}
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
+	public void setAlunoList(List<Aluno> alunoList) {
+		this.alunoList = alunoList;
 	}
 
 	@Override
