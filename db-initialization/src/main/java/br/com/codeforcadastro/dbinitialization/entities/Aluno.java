@@ -31,31 +31,23 @@ public class Aluno implements Serializable {
 	@Column(name = "aluno_address")
 	private String address;
 
+	@Column(name = "aluno_age")
+	private int age;
+
 	@ManyToOne
-	@JoinColumn(name = "ID_CURSO")
+	@JoinColumn(name = "CURSO_FK")
 	private Curso curso;
-
-	@ManyToOne
-	@JoinColumn(name = "ID_ESCOLA")
-	private Escola escola;
-
-	@ManyToOne
-	@JoinColumn(name = "ID_MATRICULA")
-	private Matricula matriculaList;
 
 	public Aluno() {
 	}
 
-	public Aluno(Long id, String name, String cpf, String address, Curso curso, Escola escola,
-			Matricula matriculaList) {
-		super();
+	public Aluno(Long id, String name, String cpf, String address, int age) {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
 		this.address = address;
-		this.curso = curso;
-		this.escola = escola;
-		this.matriculaList = matriculaList;
+		this.age = age;
+
 	}
 
 	public String getName() {
@@ -86,34 +78,21 @@ public class Aluno implements Serializable {
 		return id;
 	}
 
-	public Curso getCurso() {
-		return curso;
+	public void setCurso(Curso cursos) {
+		this.curso = cursos;
 	}
 
-	public void setCurso(Curso curso) {
-		this.curso = curso;
+	public int getAge() {
+		return age;
 	}
 
-	public Escola getEscola() {
-		return escola;
-	}
-
-	public void setEscola(Escola escola) {
-		this.escola = escola;
-	}
-
-	public Matricula getMatriculaList() {
-		return matriculaList;
-	}
-
-	public void setMatriculaList(Matricula matriculaList) {
-		this.matriculaList = matriculaList;
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 
 	@Override
 	public int hashCode() {

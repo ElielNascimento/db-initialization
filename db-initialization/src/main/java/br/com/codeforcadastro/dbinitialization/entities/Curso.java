@@ -1,17 +1,21 @@
 package br.com.codeforcadastro.dbinitialization.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tbl_curso")
@@ -29,26 +33,22 @@ public class Curso implements Serializable {
 	@Column(name = "curso_duration")
 	private int duration;
 
-	@OneToMany
-	@JoinColumn(name = "ID_CURSO")
-	private List<Aluno> listAlunos;
+	@JsonIgnore
+	@OneToMany(mappedBy = "curso", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	private List<Aluno> alunoList = new ArrayList<>();
 
 	public Curso() {
 	}
 
-	public Curso(Long id, String name, int duration) {
-		super();
+	public Curso(Long id, String name, int duration, List<Aluno> alunoList) {
 		this.id = id;
 		this.name = name;
 		this.duration = duration;
+		this.alunoList = alunoList;
 	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -69,6 +69,22 @@ public class Curso implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public List<Aluno> getAlunoList() {
+		return alunoList;
+	}
+
+	public void setAlunoList(List<Aluno> alunoList) {
+		this.alunoList = alunoList;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import br.com.codeforcadastro.dbinitialization.dto.AlunoDTO;
 import br.com.codeforcadastro.dbinitialization.entities.Aluno;
 import br.com.codeforcadastro.dbinitialization.repository.AlunoRepository;
+import br.com.codeforcadastro.dbinitialization.repository.CursoRepository;
 
 @Service
 public class AlunoService implements Serializable {
@@ -18,18 +19,36 @@ public class AlunoService implements Serializable {
 	@Autowired
 	public AlunoRepository alunoRepository;
 
+	@Autowired
+	public CursoRepository cursoRepository;
+
 	public List<AlunoDTO> findAll() {
 		List<Aluno> list = alunoRepository.findAll();
 		return list.stream().map(x -> new AlunoDTO(x)).collect(Collectors.toList());
 	}
 
+	public AlunoDTO findById(Long id) {
+		Aluno aluno = alunoRepository.findById(id).get();
+		AlunoDTO dto = new AlunoDTO(aluno);
+		return dto;
+	}
+
 	public AlunoDTO insert(AlunoDTO dto) {
-		Aluno aluno = new Aluno(null, dto.getName(), dto.getCpf(), dto.getAddress(), dto.getCurso(), dto.getEscola(),
-				dto.getMatriculaList());
+		Aluno aluno = new Aluno(null, dto.getName(), dto.getCpf(), dto.getAddress(), dto.getAge());
+		// aluno precisar ter > 18 anos e residir em maringa
+		if (aluno.getAge() < 18 != !aluno.getAddress().equals("maringa")) {
+			throw new RuntimeException("Inscrição apenas > de 18 anos");
+		}
 
-		aluno = alunoRepository.save(aluno);
-		return new AlunoDTO(aluno);
+		else {
+			aluno = alunoRepository.save(aluno);
+			return new AlunoDTO(aluno);
+		}
 
+	}
+
+	public void delete(Long id) {
+		alunoRepository.deleteById(id);
 	}
 
 }
