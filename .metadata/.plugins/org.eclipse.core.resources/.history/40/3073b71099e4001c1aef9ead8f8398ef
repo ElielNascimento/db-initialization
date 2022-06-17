@@ -1,5 +1,0 @@
-package br.com.codeforcadastro.dbinitialization.repository;
-
-public interface CursoRepository {
-
-}

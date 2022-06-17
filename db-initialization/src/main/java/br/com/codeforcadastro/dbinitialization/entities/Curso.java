@@ -47,15 +47,11 @@ public class Curso implements Serializable {
 		this.alunoList = alunoList;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
 	public String getName() {
 		return name;
 	}
 
-	public void setNome(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -63,12 +59,8 @@ public class Curso implements Serializable {
 		return duration;
 	}
 
-	public void setDuracao(int duration) {
+	public void setDuration(int duration) {
 		this.duration = duration;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	public List<Aluno> getAlunoList() {
@@ -79,12 +71,12 @@ public class Curso implements Serializable {
 		this.alunoList = alunoList;
 	}
 
-	public void setDuration(int duration) {
-		this.duration = duration;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public Long getId() {
+		return id;
 	}
 
 	@Override

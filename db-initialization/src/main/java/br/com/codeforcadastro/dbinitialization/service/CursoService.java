@@ -40,6 +40,17 @@ public class CursoService implements Serializable {
 		return new CursoDTO(curso);
 	}
 
+	public CursoDTO update(Long id, CursoDTO obj) {
+		Curso curso = cursoRepository.findById(id).get();
+
+		curso.setName(obj.getName());
+		curso.setDuration(obj.getDuration());
+
+		cursoRepository.save(curso);
+		return new CursoDTO(curso);
+
+	}
+
 	public void delete(Long id) {
 		cursoRepository.deleteById(id);
 	}

@@ -35,8 +35,7 @@ public class AlunoService implements Serializable {
 
 	public AlunoDTO insert(AlunoDTO dto) {
 		Aluno aluno = new Aluno(null, dto.getName(), dto.getCpf(), dto.getAddress(), dto.getAge());
-		// aluno precisar ter > 18 anos e residir em maringa
-		if (aluno.getAge() < 18 != !aluno.getAddress().equals("maringa")) {
+		if (aluno.getAge() < 18) {
 			throw new RuntimeException("Inscrição apenas > de 18 anos");
 		}
 
@@ -45,6 +44,19 @@ public class AlunoService implements Serializable {
 			return new AlunoDTO(aluno);
 		}
 
+	}
+
+	public AlunoDTO uptade(Long id, AlunoDTO obj) {
+		Aluno aluno = alunoRepository.findById(id).get();
+
+		aluno.setName(obj.getName());
+		aluno.setAddress(obj.getAddress());
+		aluno.setCpf(obj.getCpf());
+		aluno.setAge(obj.getAge());
+
+		alunoRepository.save(aluno);
+
+		return new AlunoDTO(aluno);
 	}
 
 	public void delete(Long id) {
